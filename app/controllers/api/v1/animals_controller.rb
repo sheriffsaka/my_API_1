@@ -2,7 +2,10 @@ module Api
     module V1
         class AnimalsController < ApplicationController
             def index
-                animals = Animal.order('created_at DESC');
+               # animals = Animal.order('created_at DESC');
+                # animals = Animal.page(1);
+                animals = Animal.page(6).per(20);
+                # animals = Animal.page(page).per(per_page)
                 render json: {status: 'SUCCESS', message: 'Loaded animals', data: animals}, status: :ok
             end
 
@@ -41,6 +44,14 @@ module Api
             private
             def animal_params
                 params.permit(:aname)
+            end
+
+            def page
+                page ||= params[:page] || 1
+            end
+
+            def per_page
+                per_page ||= params[:per_page] || 20
             end
 
         end

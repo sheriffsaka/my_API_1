@@ -21,6 +21,9 @@ gem "pundit"
 
 gem "devise"
 
+# Use the kaminari to add pagination to the project.
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
